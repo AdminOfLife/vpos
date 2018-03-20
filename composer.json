@@ -1,0 +1,17 @@
+{
+	"name": "adminoflife/vpos",
+	"require": {
+		"php":">=5.6.0",
+		"adminoflife/iso8583":"dev-master",
+		"ext-oci8": "*",
+		"justinrainbow/json-schema": "^5.2"
+	},
+	"repositories":[
+        {
+            "type":"git",
+            "url":"https://github.com/AdminOfLife/iso8583"
+        }
+	
+	]
+	
+}
