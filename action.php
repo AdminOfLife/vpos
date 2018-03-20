@@ -18,6 +18,7 @@ else
 
 $controller = new Controller();
 $controller->process($card_num, $sum, $pid, $cvv);
+$resp_code = $controller->process($card_num, $sum, $pid, $cvv);
 
 ?>
 

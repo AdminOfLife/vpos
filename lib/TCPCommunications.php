@@ -28,11 +28,10 @@ class TCPCommunications
 			echo "Bad";
 			echo $errstr ($errno);
 			fclose($this->fp);
-			return TIMEOUT;//OTHERERR;		
+			return OTHERERR;		
 		}
 		else
 		{
-			echo "Good\n";
 			fwrite($this->fp, $msg);
 			$meta = stream_get_meta_data($this->fp);
 			if ($meta['timed_out'] == TRUE)
