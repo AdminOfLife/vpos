@@ -2,11 +2,6 @@
 require 'pack.php';
 require 'TCPCommunications.php';
 
-class ConnectInfo
-{
-	
-}
-
 class Controller
 {
 	private $host;
@@ -18,18 +13,13 @@ class Controller
 	public function process($card_num, $sum, $pid, $cvv)
 	{
 		$this->get_login_info($this->login_file);
-		
 		$this->port = $this->get_port_by_pid($pid);
 		$message = pack_message($card_num, $sum, $pid);
-		echo "\n<h2>cvv yet not supported!</h2>\n";
-		echo "<h2>packet to send=></h2></br>";
 		$packed_message = $message->pack();
-		echo '<pre>'; 
+
 		var_dump($message->getbitmap());
 		var_dump($message->getmti());
 		var_dump($message->getfields());
-		echo '</pre>';
-		echo "send packet...</br>";
 
 		$tcp = new TCPCommunications($this->host, $this->port, 5);
 		try
@@ -44,12 +34,9 @@ class Controller
 		}
 		$unpack = $message->unpack($tcp->Recive());
 		
-		echo '<h2>recived message type: '."<b>".$message->getmti()."</b></h2></br>";
-		echo '<pre>';
 		var_dump($message->getbitmap());
 		var_dump($message->getmti());
 		var_dump($message->getfields());
-		echo '</pre>';
 	}
 
 	private function get_port_by_pid($pid)
@@ -73,19 +60,11 @@ class Controller
 		}
 	}
 
-	private function dummy($oci)
-	{
-		return $this->json_to_oracle($oci);
-	}
-
 	private function get_connection_string()
 	{
 		$data = file_get_contents('oci.json');
 		$oci = json_decode($data, true);
-		echo json_last_error_msg();
-		$str = $this->json_to_oracle($oci);
-		echo $str;
-		return $str;
+		return $this->json_to_oracle($oci);
 	}
 
 	private function get_login_info($file)
