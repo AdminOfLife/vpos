@@ -26,7 +26,7 @@ class Controller
 		catch (Exception $e)
 		{
 			if ($e->getCode() == TIMEOUT)
-			SendReversal($card_num, $sum, $pid);
+				SendReversal($card_num, $sum, $pid);
 			return -1;
 		}
 		$unpack = $message->unpack($tcp->Recive());
@@ -53,11 +53,10 @@ class Controller
 		$stid = oci_parse($conn, 'SELECT LOCAL_PORT FROM TCP_TAB WHERE PID = '.$pid);
 		oci_execute($stid);
 
-		while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
-			foreach ($row as $item) {
-				return $item;
-			}
-		}
+				
+		if (($row = oci_fetch_assoc($stid)) != false)
+			return $row['LOCAL_PORT'];
+		return null;
 	}
 
 	private function get_connection_string()
