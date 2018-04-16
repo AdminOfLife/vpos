@@ -15,6 +15,11 @@ class Controller
 
 	public function process($card_num, $sum, $pid, $cvv)
 	{
+		/*
+			TODO: Prepare data for MPI: 
+				Merchant ID
+				Acquirer BIN
+		*/
 		$mpi = new MPI($card_num);
 		if ($mpi->Process() == MPI_STATUS[0])
 		{

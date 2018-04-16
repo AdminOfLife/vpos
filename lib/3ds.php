@@ -71,7 +71,18 @@
 	
 	$verreq = new VEReq();
 
+	class MessageFactory
+	{
+		public function __construct($msgType)
+		{
+			switch ($msgType)
+			{
+				case VEReq:
+					return new VEReq();
+			}	
+		}
 
+	}
 
 
 ?>

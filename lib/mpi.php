@@ -8,6 +8,13 @@ define("MPI_STATUS", array(
 class MPI
 {
 	private $pan;
+	private $data;
+	private $VisaDirectoryServerURL;
+
+	public function __construct($pan)
+	{
+		$this->pan = $pan;	
+	}
 
 	public function Process()
 	{
@@ -77,24 +84,29 @@ class MPI
 		return $status;
 	}
 
-	public function __construct($pan)
-	{
-		$this->pan = $pan;	
-	}
 
-	protected function Request($type)
+	protected function Request($type, $data)
 	{
 		switch ($type)
 		{
+			case CRReq:
+			{
+				break;
+			}
 			case VEReq:
 			{
-				echo VEReq . "\n";
+				
 				break;
 			} 
+			case PAReq:
+			{
+				break;
+			}
+
 		}
 	}
 
-	protected function Response($type)
+	protected function Response($type, $data)
 	{
 		switch ($type)
 		{
