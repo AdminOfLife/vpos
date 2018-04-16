@@ -12,6 +12,10 @@ class MPI
 	public function Process()
 	{
 		$status;	
+
+		/**********************************/
+		/**							STEP 2					 **/
+		/**********************************/
 		$this->Request(VEReq);
 		
 		/**********************************/
@@ -92,7 +96,14 @@ class MPI
 
 	protected function Response($type)
 	{
-
+		switch ($type)
+		{
+			case VERes:
+			{
+				echo VERes . "\n";
+				return true;
+			} 
+		}
 	}
 }
 
