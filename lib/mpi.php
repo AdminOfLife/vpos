@@ -12,12 +12,12 @@ class MPI
 	public function Process()
 	{
 		$status;	
-		$this->Request(VAReq);
+		$this->Request(VEReq);
 		
-		/**********************************/	
-		/**							STEP 5					 **/ 
 		/**********************************/
-		if ($this->Response(VARes) == FAIL) // 'PAN Authentication Available' is not equal to “Y”
+		/**							STEP 5					 **/
+		/**********************************/
+		if ($this->Response(VERes) == FAIL) // 'PAN Authentication Available' is not equal to “Y”
 		{
 			/* Process it and go to on step 12 (3DSSpecifications-CoreFunctions.pdf) */
 			$status = FAIL;
@@ -82,9 +82,9 @@ class MPI
 	{
 		switch ($type)
 		{
-			case VAReq:
+			case VEReq:
 			{
-				echo VAReq . "\n";
+				echo VEReq . "\n";
 				break;
 			} 
 		}

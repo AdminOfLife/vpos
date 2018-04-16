@@ -1,8 +1,12 @@
 <?php
 	//require_once 'XML/Serializer.php';
 
-	define('VAReq',0);	
-	define('PAReq');
+	define('VEReq',0);	
+	define('VERes',1);	
+	define('PAReq',2);
+	define('PARes',3);
+
+	define('FAIL', 0);
 
 	class ThreeDSecure
 	{
