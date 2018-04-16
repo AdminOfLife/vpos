@@ -17,8 +17,17 @@ else
 }
 
 $controller = new Controller();
-$controller->process($card_num, $sum, $pid, $cvv);
 $resp_code = $controller->process($card_num, $sum, $pid, $cvv);
+
+if ($resp_code == "000")
+{
+	echo "All good\n";
+}
+else
+{
+	echo "respcode = ${resp_code}\n";
+	echo "All bad\n";
+}
 
 ?>
 
